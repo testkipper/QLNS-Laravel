@@ -17,14 +17,7 @@
                     </li>
                     <li><a href="app-widget-card.html"><i class="ti-layout-grid2-alt"></i> Quản lý quỹ lương</a></li>
                     <li class="label">Features</li>
-                    <li><a class="sidebar-sub-toggle"><i class="ti-layout"></i> UI Elements <span class="sidebar-collapse-icon ti-angle-down"></span></a>
-                        <ul>
-                            <li><a href="ui-typography.html">Typography</a></li>
-                            <li><a href="ui-alerts.html">Alerts</a></li>
-                            <li><a href="ui-tab.html">Tab</a></li>
-
-                        </ul>
-                    </li>
+                    
                     <li><a class="sidebar-sub-toggle"><i class="ti-panel"></i> Components <span class="sidebar-collapse-icon ti-angle-down"></span></a>
                         <ul>
                             <li><a href="uc-calendar.html">Calendar</a></li>
