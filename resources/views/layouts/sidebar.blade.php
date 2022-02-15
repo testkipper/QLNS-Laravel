@@ -6,20 +6,16 @@
                             <!-- <img src="assets/images/logo.png" alt="" /> --><span>QLNS</span>
                         </a></div>
                     <li class="label">Main</li>
-                    <li><a class="sidebar-sub-toggle"><i class="ti-home"></i> Dashboard <span class="badge badge-primary"></span> <span class="sidebar-collapse-icon "></span></a>
+                    <li><a class="sidebar-sub-toggle"><i class="ti-home"></i> Trang chủ <span class="badge badge-primary"></span> <span class="sidebar-collapse-icon "></span></a>
                     </li>
 
-                    <li class="label">Apps</li>
-                    <li><a class="sidebar-sub-toggle"><i class="ti-bar-chart-alt"></i> Charts <span class="sidebar-collapse-icon ti-angle-down"></span></a>
-                        <ul>
-                            <li><a href="chart-sparkline.html">Sparkle</a></li>
-                            <li><a href="chart-knob.html">Knob</a></li>
-                        </ul>
+                    <li class="label">Apps</li>                  
+                    <li><a href="app-event-calender.html"><i class="ti-calendar"></i> Quản lý dự án </a></li>
+                    <li><a href="app-email.html"><i class="ti-email"></i> Quản lý phòng ban</a></li>
+                    <li><a href="app-profile.html"><i class="ti-user"></i> Quản lý nhân viên </a></li>
+                    <li><a class="sidebar-sub-toggle"><i class="ti-bar-chart-alt"></i> Quản lý hợp đồng lao động <span class="sidebar-collapse-icon"></span></a> 
                     </li>
-                    <li><a href="app-event-calender.html"><i class="ti-calendar"></i> Calender </a></li>
-                    <li><a href="app-email.html"><i class="ti-email"></i> Email</a></li>
-                    <li><a href="app-profile.html"><i class="ti-user"></i> Profile</a></li>
-                    <li><a href="app-widget-card.html"><i class="ti-layout-grid2-alt"></i> Widget</a></li>
+                    <li><a href="app-widget-card.html"><i class="ti-layout-grid2-alt"></i> Quản lý quỹ lương</a></li>
                     <li class="label">Features</li>
                     <li><a class="sidebar-sub-toggle"><i class="ti-layout"></i> UI Elements <span class="sidebar-collapse-icon ti-angle-down"></span></a>
                         <ul>
