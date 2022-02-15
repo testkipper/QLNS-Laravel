@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Focus Admin: Creative Admin Dashboard</title>
+    <title>QLNS: Laravel</title>
     <!-- ================= Favicon ================== -->
     <!-- Standard -->
     <link rel="shortcut icon" href="http://placehold.it/64.png/000/fff">
@@ -33,22 +33,22 @@
 
 <body>
 
-      @include("layouts.sidebar")
+    @include("layouts.sidebar")
 
-      @include("layouts.header")
+    @include("layouts.header")
 
     <div class="content-wrap">
         <div class="main">
             <div class="container-fluid">
-      @include("layouts.content") 
-      @include("layouts.footer") 
+                @include("layouts.content")
+                @include("layouts.footer")
+            </div>
+        </div>
     </div>
-</div>
-</div>
 
- 
 
-      
+
+
 
 
     <!-- jquery vendor -->
