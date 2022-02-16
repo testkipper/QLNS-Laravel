@@ -40,8 +40,8 @@
     <div class="content-wrap">
         <div class="main">
             <div class="container-fluid">
+                <!-- @yield('content') -->
                 @include('layouts.content')
-               
             </div>
             @include('layouts.footer')
         </div>

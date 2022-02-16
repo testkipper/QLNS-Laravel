@@ -275,9 +275,9 @@ span.badge {
   width: 70%;
 }
 .modal-header .close {
-  font-size: 14px;
-  margin-right: 15px;
-  margin-top: 5px;
+  font-size: 25px;
+  margin-right: -15px;
+  margin-top: -15px;
 }
 .modal-content {
   border-radius: 3px;
@@ -723,6 +723,8 @@ a.dt-button.active:not(.disabled) {
   font-size: 20px;
   font-weight: 700;
 }
+
+
 .sidebar-hide .logo {
   width: 0;
 }
@@ -4524,3 +4526,13 @@ h6.h1 {
     display: inline-block !important;
   }
 }
+
+
+.mtt{
+  margin-top: 10px;
+}
+
+.mttb{
+  margin-top: 30px;
+}
+

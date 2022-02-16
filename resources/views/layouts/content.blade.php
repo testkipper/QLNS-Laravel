@@ -1,5 +1,6 @@
+
    <div class="row">
-                    <div class="col-lg-8 p-r-0 title-margin-right">
+                    <div class="col-lg-7 p-r-0 title-margin-right mt-5">
                         <div class="page-header">
                             <div class="page-title">
                                 <h1>Hello, <span>Welcome Here</span></h1>
@@ -7,7 +8,7 @@
                         </div>
                     </div>
                     <!-- /# column -->
-                    <div class="col-lg-4 p-l-0 title-margin-left">
+                    <div class="col-lg-4 p-l-0 title-margin-left mt-5">
                         <div class="page-header">
                             <div class="page-title">
                                 <ol class="breadcrumb">
@@ -18,7 +19,7 @@
                         </div>
                     </div>
                     <!-- /# column -->
-                </div>
+</div>
   <div class="row">
                         <div class="col-lg-3">
                             <div class="card">
@@ -618,3 +619,5 @@
                         </div>
                         <!-- /# column -->
                     </div>
+
+
