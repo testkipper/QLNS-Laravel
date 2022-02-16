@@ -31,18 +31,19 @@
     <link href="assets/css/style.css" rel="stylesheet">
 </head>
 
-<body>
+<body class="sidebar-hide pace-done">
 
-    @include("layouts.sidebar")
+    @include('layouts.sidebar')
 
-    @include("layouts.header")
+    @include('layouts.header')
 
     <div class="content-wrap">
         <div class="main">
             <div class="container-fluid">
-                @include("layouts.content")
-                @include("layouts.footer")
+                @include('layouts.content')
+               
             </div>
+            @include('layouts.footer')
         </div>
     </div>
 
