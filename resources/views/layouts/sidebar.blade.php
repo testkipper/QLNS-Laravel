@@ -1,6 +1,6 @@
     <div class="sidebar sidebar-hide-to-small sidebar-shrink sidebar-gestures">
         <div class="nano">
-            <div class="nano-content">
+            <div class="nano-content active">
                 <ul>
                     <div class="logo"><a href="index.html">
                             <!-- <img src="assets/images/logo.png" alt="" /> --><span>QLNS</span>
@@ -16,8 +16,9 @@
                     <li><a class="sidebar-sub-toggle"><i class="ti-bar-chart-alt"></i> Quản lý hợp đồng lao động <span class="sidebar-collapse-icon"></span></a> 
                     </li>
                     <li><a href="app-widget-card.html"><i class="ti-layout-grid2-alt"></i> Quản lý quỹ lương</a></li>
-                    <li class="label">Features</li>
-                    
+
+                    <li class="label">Features</li>   
+                                  
                     <li><a class="sidebar-sub-toggle"><i class="ti-panel"></i> Components <span class="sidebar-collapse-icon ti-angle-down"></span></a>
                         <ul>
                             <li><a href="uc-calendar.html">Calendar</a></li>
@@ -44,4 +45,5 @@
             </div>
         </div>
     </div>
+
     <!-- /# sidebar -->

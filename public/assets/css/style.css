@@ -2514,7 +2514,7 @@ ul {
   border-top: 1px solid #e7e7e7;
   line-height: 1.42857;
   padding: 8px;
-  vertical-align: top;
+
 }
 @media (max-width: 767px) {
   .files .btn span {
@@ -2728,7 +2728,8 @@ tbody tr td:last-child {
 .table > thead > tr > td,
 .table > thead > tr > th {
   line-height: 32px;
-  vertical-align: top;
+  vertical-align: middle;
+  text-align: center;
 }
 .table > thead > tr > th {
   border-bottom: 1px solid #e7e7e7;
@@ -2737,6 +2738,8 @@ tbody tr td:last-child {
 }
 .table {
   margin-bottom: 0;
+  /* sua */
+  width: 100% !important;
 }
 .table .badge {
   text-transform: uppercase;
