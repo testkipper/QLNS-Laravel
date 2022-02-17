@@ -19,8 +19,16 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/', function () {
     return view('home');
     });
-
+    
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->middleware(['auth'])->name('dashboard');
 });
+Route::get('/employee-manager', function () {
+    return view('managers.employee');
+    });
+
+Route::post('/department-manager', ['as'=>'insertDepartment', 'uses'=>'DepartmentController@insertDepartment']);
+Route::get('/department-manager', 'DepartmentController@index');
+
+Route::get('department-manager/{id}',['as'=>'delDepartment', 'uses'=>'DepartmentController@delDepartment']);

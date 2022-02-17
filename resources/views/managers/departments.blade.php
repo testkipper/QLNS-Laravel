@@ -8,6 +8,16 @@
                     <li class="breadcrumb-item active">quanly-phongban</li>
                 </ol>
 
+@if($errors->any())
+    <div class="alert alert-danger">
+        thêm thất bại
+    </div>
+@endif
+@if(!$errors->any())
+    <div class="alert alert-success">
+        thêm thành công
+    </div>
+@endif
 <div class="row">
 
         <div class="col-md-4">
@@ -91,6 +101,7 @@
     <thead>
        <tr>
             <th class="col-lg-1">Mã</th>
+
             <th class="col-lg-9">Tên phòng ban</th>
             <th class="col-lg-1">Sửa</th>
             <th class="col-lg-1">Xóa</th>
@@ -99,34 +110,30 @@
     </thead>
     <tbody>
 
-            <c:forEach items="" var="s">
-                <tr>
-                    <td></td>
-                    <td></td>
-                   
-               
-                    
-                    <!-- <td class="w-25">
-                          <img src="${s.image}" class="img-fluid img-thumbnail" alt="Sheep">
-
-                    </td> -->
-                  
-                    <td >
+            <@foreach($departments as $p)
+            <tr>
+                <td>{{$p->id}}</td>
+              <td>{{$p->name}}</td>
+              <td >
                         <a data-toggle="tooltip" class="btn btn-success"title="chỉnh sửa" href="">
                         <i class="fa fa-edit"></i>
                          </a>
                     </td>
                      <td >
-                     <a data-toggle="tooltip" class="btn btn-primary"title="chỉnh sửa" href="">
+                     <a data-toggle="tooltip" class="btn btn-primary"title="xóa" href="{{route('delDepartment',['id' => $p->id])}}">
                                <i class="fa fa-trash" style="color:#ed3c0d"></i>
                              
                          </a>
                     </td>
-                </tr>
-            </c:forEach>
+            </tr>
+
+            @endforeach
+
       </tbody>
 
 </table>
+<br><br>
+{{$departments ->links()}}
 </div>
     
     <!-- Modal
@@ -163,10 +170,14 @@
       </div>
       <div class="modal-body">
         
-      <form>
+      <form method="POST" action="{{route('insertDepartment')}}">
+        {{csrf_field()}}
           <div class="form-group">
+              @error('name')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
             <label for="exampleInputEmail1">Tên phòng ban</label>
-            <input type="text" class="form-control" id="exampleInputEmail1"  placeholder="">
+            <input type="text" class="form-control" id="exampleInputEmail1" name='name'  placeholder="">
 
           <button type="submit" class="btn btn-primary mttb">Thêm</button>
         </form>
@@ -177,6 +188,16 @@
   </div>
 </div>           
 
+
+<script>
+    
+    var existErr = '{{Session::has('errors')}}';
+
+    if(exist){
+      alert("Đã có lỗi gì đó");
+    }
+    
+  </script>
 
 
 @endsection
