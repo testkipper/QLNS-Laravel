@@ -10,8 +10,8 @@
                     </li>
 
                     <li class="label">Apps</li>                  
-                    <li><a href="app-event-calender.html"><i class="ti-calendar"></i> Quản lý dự án </a></li>
-                    <li><a href="app-email.html"><i class="ti-email"></i> Quản lý phòng ban</a></li>
+                    <li><a href="#"><i class="ti-calendar"></i> Quản lý dự án </a></li>
+                    <li><a href="{{route('departmentManager')}}"><i class="ti-email"></i> Quản lý phòng ban</a></li>
                     <li><a href="app-profile.html"><i class="ti-user"></i> Quản lý nhân viên </a></li>
                     <li><a class="sidebar-sub-toggle"><i class="ti-bar-chart-alt"></i> Quản lý hợp đồng lao động <span class="sidebar-collapse-icon"></span></a> 
                     </li>

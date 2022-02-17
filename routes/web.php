@@ -16,9 +16,7 @@ require __DIR__.'/auth.php';
 
 
 Route::middleware(['admin'])->group(function () {
-    Route::get('/', function () {
-    return view('home');
-    });
+    Route::get('/', ['as'=>'home', 'uses'=>'HomeController@index']);
     
     Route::get('/dashboard', function () {
         return view('dashboard');
@@ -28,7 +26,10 @@ Route::get('/employee-manager', function () {
     return view('managers.employee');
     });
 
+//ROUTE START department-manager
 Route::post('/department-manager', ['as'=>'insertDepartment', 'uses'=>'DepartmentController@insertDepartment']);
-Route::get('/department-manager', 'DepartmentController@index');
+Route::get('/department-manager', ['as'=>'departmentManager', 'uses'=>'DepartmentController@index']);
 
 Route::get('department-manager/{id}',['as'=>'delDepartment', 'uses'=>'DepartmentController@delDepartment']);
+
+//ROUTE: END route department-manager
