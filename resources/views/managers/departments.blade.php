@@ -114,11 +114,13 @@
             <tr>
                 <td>{{$p->id}}</td>
               <td>{{$p->name}}</td>
-              <td >
-                        <a data-toggle="tooltip" class="btn btn-success"title="chỉnh sửa" href="">
+                
+                  <td >
+                        <a data-toggle="tooltip" class="btn btn-success"title="chỉnh sửa" href="{{route('departmentedit',['id'=>$p->id])}}">
                         <i class="fa fa-edit"></i>
                          </a>
-                    </td>
+                    </td>                  
+                                
                      <td >
                      <a data-toggle="tooltip" class="btn btn-primary"title="xóa" href="{{route('delDepartment',['id' => $p->id])}}">
                                <i class="fa fa-trash" style="color:#ed3c0d"></i>
@@ -189,6 +191,14 @@
 </div>           
 
 
+
+
+
+
+
+
+@endsection
+
 <script>
     
     var existErr = '{{Session::has('errors')}}';
@@ -197,7 +207,6 @@
       alert("Đã có lỗi gì đó");
     }
     
+
   </script>
-
-
-@endsection
+  

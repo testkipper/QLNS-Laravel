@@ -36,4 +36,32 @@ class DepartmentController extends Controller
         $department = Department::paginate(10);
         return redirect()->action([DepartmentController::class, 'index']);
     }
+
+    public function edit($id)
+    {
+         $department = Department::where("id", $id)->first();
+        return view('managers\editdepartment', compact('department'));
+    }
+
+    public function update(Request $request, $id)
+    {
+
+         $messages=[
+                'name.required'=>'Bạn phải nhập tên phòng bang'
+                ];
+        $validator= Validator::make($request -> all(),[
+            'name' => 'required'
+        ],$messages)->validate();
+      department::updateOrCreate(
+       [
+        'id' => $id
+       ],
+       [
+        'name' => $request->name
+       ]
+      );
+
+      return redirect()->action([DepartmentController::class, 'index']);
+
+    }
 }
