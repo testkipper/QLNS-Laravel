@@ -7,7 +7,17 @@
                     <li class="breadcrumb-item "><a href="">admin</a></li>
                     <li class="breadcrumb-item active">quanly-hopdonglaodong</li>
                 </ol>
+@if($errors->any())
+    <div class="alert alert-danger">
+        thêm thất bại
+    </div>
+@endif
 
+@if(!$errors->any())
+    <div class="alert alert-success">
+        thêm thành công
+    </div>
+@endif
 <div class="row">
 
         <div class="col-md-4">
@@ -102,27 +112,27 @@
     </thead>
     <tbody>
 
-            <c:forEach items="" var="s">
+           @foreach($contracts as $c)
                 <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td>{{$c -> id}}</td>
+                    <td>{{$c -> name}}</td>
+                    <td>{{$c -> from_date}}</td>
+                    <td>{{$c -> to_date}}</td>
+                    <td>{{$c -> employee -> first_name}}</td>
                
                     <td >
-                        <a data-toggle="tooltip" class="btn btn-success"title="chỉnh sửa" href="">
+                        <a data-toggle="tooltip" class="btn btn-success"title="chỉnh sửa" href="{{route('labourContractEdit', ['id'=>$c->id])}}">
                         <i class="fa fa-edit"></i>
                          </a>
                     </td>
                      <td >
-                     <a data-toggle="tooltip" class="btn btn-primary"title="chỉnh sửa" href="">
+                     <a data-toggle="tooltip" class="btn btn-primary"title="chỉnh sửa" href="{{route('labourContractUpdate',['id' => $c->id])}}">
                                <i class="fa fa-trash" style="color:#ed3c0d"></i>
                              
                          </a>
                     </td>
                 </tr>
-            </c:forEach>
+            @endforeach
       </tbody>
 
 </table>
@@ -162,26 +172,38 @@
       </div>
       <div class="modal-body">
         
-      <form>
-          <div class="form-group">
-            <label for="exampleInputEmail1">Loại hợp đồng</label>
-            <input type="text" class="form-control" id="exampleInputEmail1"  placeholder="">
-            
-          </div>
-          <div class="form-group">
-            <label for="exampleInputPassword1">Ngày bắt đầu</label>
-            <input type="date" class="form-control" id="exampleInputPassword1">
+      <form method="POST" action="{{route('insertLabourContract')}}">
+      {{csrf_field()}}
+      <div class="form-group">
+              @error('name')
+                    <div class="alert alert-danger">{{ $message }}</div>
+              @enderror
+            <label for="exampleInputEmail1">Tên hợp đồng</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" name='name'  placeholder="">
           </div>
 
           <div class="form-group">
-            <label for="exampleInputPassword1">Ngày kết thúc</label>
-            <input type="date" class="form-control" id="exampleInputPassword1">
+              @error('from_date')
+                    <div class="alert alert-danger">{{ $message }}</div>
+              @enderror
+            <label for="exampleInputEmail1">Ngày bắt đầu</label>
+            <input type="date" class="form-control" id="exampleInputEmail1" name='from_date'  placeholder="">
           </div>
+
+          <div class="form-group">
+              @error('to_date')
+                    <div class="alert alert-danger">{{ $message }}</div>
+              @enderror
+            <label for="exampleInputEmail1">Ngày kết thúc</label>
+            <input type="date" class="form-control" id="exampleInputEmail1" name='to_date'  placeholder="">
+          </div>
+
           <div class="form-group">
             <label for="inputState">Tên nhân viên</label>
-              <select id="inputState" class="form-control">
-                <option selected>Choose...</option>
-                <option>...</option>
+              <select path="employee" id="em" class="form-control">
+                @foreach($employees as $e)
+                <option value="{{$e->id}}">{{$e->first_name}}</option>
+                @endforeach
               </select>
         </div>
           <button type="submit" class="btn btn-primary">Thêm</button>

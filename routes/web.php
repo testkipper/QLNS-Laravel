@@ -114,6 +114,13 @@ Route::post('education-manager/{id}/edit',['as'=>'educationUpdate','uses'=>'Educ
 //ROUTE: END route position-manager
 
 
+//ROUTE START labourcontract-manager
+Route::post('/labourcontract-manager', ['as'=>'insertLabourContract', 'uses'=>'LabourContractController@insertLabourContract']);
+Route::get('/labourcontract-manager', ['as'=>'labourContractManager', 'uses'=>'LabourContractController@index']);
+Route::get('labourcontract-manager/{id}',['as'=>'delLabourContract', 'uses'=>'LabourContractController@delLabourContract']);
 
+Route::get('labourcontract-manager/{id}/edit',['as'=>'labourContractEdit','uses'=>'LabourContractController@edit']);
+Route::post('labourcontract-manager/{id}/edit',['as'=>'labourContractUpdate','uses'=>'LabourContractController@update']);
+//ROUTE: END labourcontract-manager
 
 

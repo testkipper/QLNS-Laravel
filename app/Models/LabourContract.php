@@ -10,11 +10,12 @@ class LabourContract extends Model
     use HasFactory;
     protected $table= "labour_contract";
     public $timestamps = false;
-    public $fillable = ['id', 'current_period','work_hours','quantity_work','work_completed'];
+    public $fillable = ['id', 'name','from_date','to_date'];
     use HasFactory;
 
-    public function Project()
+    public function Employee()
     {
-        return $this->belongsTo(Project::class,'project_id','id');
+        return $this->belongsTo(Employee::class,'employee_id','id');
     }
+
 }

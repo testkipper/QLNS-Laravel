@@ -50,6 +50,7 @@ class PositionController extends Controller
         $validator= Validator::make($request -> all(),[
             'name' => 'required'
         ],$messages)->validate();
+        
         position::updateOrCreate(
        [
         'id' => $id
