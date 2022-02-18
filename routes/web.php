@@ -13,7 +13,7 @@ require __DIR__.'/auth.php';
 |
 */
 
-
+Route::get('/roles', 'PermissionController@Permission');
 
 Route::middleware(['admin'])->group(function () {
     Route::get('/', ['as'=>'home', 'uses'=>'HomeController@index']);

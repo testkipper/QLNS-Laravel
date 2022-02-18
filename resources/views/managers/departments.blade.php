@@ -13,9 +13,14 @@
         thêm thất bại
     </div>
 @endif
-@if(!$errors->any())
+@if(isset($success))
     <div class="alert alert-success">
-        thêm thành công
+        {{$success}}
+    </div>
+@endif
+@if(isset($alert))
+    <div class="alert alert-danger">
+       {{$alert}}
     </div>
 @endif
 <div class="row">
