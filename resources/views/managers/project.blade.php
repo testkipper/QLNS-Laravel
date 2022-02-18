@@ -128,7 +128,7 @@
                     </td> -->
                   
                     <td >
-                        <a data-toggle="tooltip" class="btn btn-success"title="chỉnh sửa" href="">
+                        <a data-toggle="tooltip" class="btn btn-success"title="chỉnh sửa" href="{{route('projectEdit',['id'=>$p->id])}}">
                         <i class="fa fa-edit"></i>
                          </a>
                     </td>
