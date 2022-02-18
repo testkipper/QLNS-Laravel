@@ -29,6 +29,7 @@
     <link href="assets/css/lib/bootstrap.min.css" rel="stylesheet">
     <link href="assets/css/lib/helper.css" rel="stylesheet">
     <link href="assets/css/style.css" rel="stylesheet">
+    
 </head>
 
 <body class="sidebar-hide pace-done">

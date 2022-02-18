@@ -5,8 +5,21 @@
 <h4 class="mttb">Quản lý dự án</h4>
                 <ol class="breadcrumb mb-4 mtt">
                     <li class="breadcrumb-item "><a href="">admin</a></li>
-                    <li class="breadcrumb-item active">quanly-du an</li>
+                    <li class="breadcrumb-item active">quanly-duan</li>
                 </ol>
+
+@if($errors->any())
+    <div class="alert alert-danger">
+        thêm thất bại
+    </div>
+@endif
+
+@if(!$errors->any())
+    <div class="alert alert-success">
+        thêm thành công
+    </div>
+@endif
+
 
 <div class="row">
 
@@ -101,12 +114,12 @@
     </thead>
     <tbody>
 
-            <c:forEach items="" var="s">
+           @forEach($projects as $p)
                 <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td>{{$p->id}}</td>
+                    <td>{{$p->name}}</td>
+                    <td>{{$p->from_date}}</td>
+                    <td>{{$p->to_date}}</td>
                
                     
                     <!-- <td class="w-25">
@@ -120,16 +133,18 @@
                          </a>
                     </td>
                      <td >
-                     <a data-toggle="tooltip" class="btn btn-primary"title="chỉnh sửa" href="">
+                     <a data-toggle="tooltip" class="btn btn-primary"title="chỉnh sửa" href="{{route('delProject',['id' => $p->id])}}">
                                <i class="fa fa-trash" style="color:#ed3c0d"></i>
                              
                          </a>
                     </td>
                 </tr>
-            </c:forEach>
+            @endforEach
       </tbody>
 
 </table>
+<br><br>
+{{$projects ->links()}}
 </div>
     
     <!-- Modal
@@ -166,22 +181,33 @@
       </div>
       <div class="modal-body">
         
-      <form>
+      <form method="POST" action="{{route('insertProject')}}">
+        {{csrf_field()}}
           <div class="form-group">
+              @error('name')
+                    <div class="alert alert-danger">{{ $message }}</div>
+              @enderror
             <label for="exampleInputEmail1">Tên dự án</label>
-            <input type="text" class="form-control" id="exampleInputEmail1"  placeholder="">
-            
-          </div>
-          <div class="form-group">
-            <label for="exampleInputPassword1">Ngày bắt đầu</label>
-            <input type="date" class="form-control" id="exampleInputPassword1">
+            <input type="text" class="form-control" id="exampleInputEmail1" name='name'  placeholder="">
           </div>
 
           <div class="form-group">
-            <label for="exampleInputPassword1">Ngày kết thúc</label>
-            <input type="date" class="form-control" id="exampleInputPassword1">
+              @error('from_date')
+                    <div class="alert alert-danger">{{ $message }}</div>
+              @enderror
+            <label for="exampleInputEmail1">Ngày bắt đầu</label>
+            <input type="date" class="form-control" id="exampleInputEmail1" name='from_date'  placeholder="">
           </div>
-          <button type="submit" class="btn btn-primary">Thêm</button>
+
+          <div class="form-group">
+              @error('to_date')
+                    <div class="alert alert-danger">{{ $message }}</div>
+              @enderror
+            <label for="exampleInputEmail1">Ngày kết thúc</label>
+            <input type="date" class="form-control" id="exampleInputEmail1" name='to_date'  placeholder="">
+          </div>
+
+          <button type="submit" class="btn btn-primary mttb">Thêm</button>
         </form>
         
       </div>
@@ -191,5 +217,14 @@
 </div>           
 
 
+<script>
+    
+    var existErr = '{{Session::has('errors')}}';
+
+    if(exist){
+      alert("Đã có lỗi gì đó");
+    }
+    
+  </script>
 
 @endsection
