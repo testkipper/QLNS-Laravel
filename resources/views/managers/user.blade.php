@@ -2,7 +2,7 @@
 @section('content')
 <p class="mt-0">.</p>
 <p class="mt-0">.</p>
-<h4 class="mttb">Quản lý phòng ban</h4>
+<h4 class="mttb">Quản lý user</h4>
                 <ol class="breadcrumb mb-4 mtt">
                     <li class="breadcrumb-item "><a href="">admin</a></li>
                     <li class="breadcrumb-item active">quanly-phongban</li>
@@ -211,9 +211,14 @@
               @error('password')
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
-            <label for="exampleInputEmail1">mật khẩu</label>
+            <label for="exampleInputEmail1">xác nhận mật khẩu</label>
             <input type="password" class="form-control" id="exampleInputEmail1" name='password_confirmation'  placeholder="">
         </div>
+        <select name="roles" id="roles" class="form-control">
+          @foreach($roles as $r)
+          <option value="{{$r->id}}">{{$r->slug}}</option>
+          @endforeach
+        </select> 
           <button type="submit" class="btn btn-primary mttb">Thêm</button>
         </form>
         

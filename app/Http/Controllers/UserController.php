@@ -8,11 +8,14 @@ use Illuminate\Validation\Rules;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Auth\Events\Registered;
+use App\Models\Role;
+use DB;
 class UserController extends Controller
 {
     public function userList(){
+        $roles = Role::All();
         $users = User::paginate(10);
-        return view('managers\user', compact('users'));
+        return view('managers\user', compact('users','roles'));
     }
 
     public function store(Request $request)
@@ -22,7 +25,7 @@ class UserController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
-        
+        DB::beginTransaction();
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
@@ -30,10 +33,13 @@ class UserController extends Controller
         ]);
 
         event(new Registered($user));
+     
 
-      
+
+        $user->roles()->attach($request->roles);
+        \DB::commit();
 
         $users = User::paginate(10);
-        return view('managers\user', compact('users'));
+        return redirect()->action([UserController::class, 'userlist']);
     }
 }
