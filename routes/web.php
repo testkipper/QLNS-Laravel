@@ -32,14 +32,26 @@ Route::get('/department-manager', ['as'=>'departmentManager', 'uses'=>'Departmen
 
 Route::get('department-manager/{id}/delete',['as'=>'delDepartment', 'uses'=>'DepartmentController@delDepartment']);
 
-
+Route::get('department-manager/{id}/edit',['as'=>'departmentedit','uses'=>'DepartmentController@edit']);
+Route::post('department-manager/{id}/edit',['as'=>'departmentupdate','uses'=>'DepartmentController@update']);
 //ROUTE: END route department-manager
+//ROUTE START user-manager
+Route::get('/user-manager', ['as'=>'usermanager', 'uses'=>'UserController@userList']);
+Route::post('/user-manager/register', ['as'=>'userregister', 'uses'=>'UserController@store']);
+Route::get('/usermanager/{id}/{hash}', ['as'=>'verify', 'uses'=>'VerifyEmailController@__invoke'])
+                ->middleware(['signed', 'throttle:6,1'])
+                ->name('verification.verify');
+
+    Route::post('/usermanager/verification-notification', [EmailVerificationNotificationController::class, 'store'])
+                ->middleware('throttle:6,1')
+                ->name('verification.send');
+//ROUTE: END route user-manager
+
 //ROUTE START project-manager
 Route::post('/project-manager', ['as'=>'insertProject', 'uses'=>'ProjectController@insertProject']);
 Route::get('/project-manager', ['as'=>'projectManager', 'uses'=>'ProjectController@index']);
 Route::get('project-manager/{id}',['as'=>'delProject', 'uses'=>'ProjectController@delProject']);
 //ROUTE: END route project-manager
-Route::get('department-manager/{id}/edit',['as'=>'departmentedit','uses'=>'DepartmentController@edit']);
-Route::post('department-manager/{id}/edit',['as'=>'departmentupdate','uses'=>'DepartmentController@update']);
+
 //ROUTE: END route department-manager
 
