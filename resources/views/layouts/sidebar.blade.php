@@ -16,6 +16,9 @@
                     <li><a class="sidebar-sub-toggle"><i class="ti-bar-chart-alt"></i> Quản lý hợp đồng lao động <span class="sidebar-collapse-icon"></span></a> 
                     </li>
                     <li><a href="app-widget-card.html"><i class="ti-layout-grid2-alt"></i> Quản lý quỹ lương</a></li>
+                    <li><a href="{{route('positionManager')}}"><i class="ti-layout-grid2-alt"></i> Quản lý chức vụ</a></li>
+
+                    <li><a href="{{route('educationManager')}}"><i class="ti-layout-grid2-alt"></i>Quản lý trình độ học vấn</a></li>
 
                     <li class="label">Features</li>   
                                   

@@ -7,7 +7,16 @@
                     <li class="breadcrumb-item "><a href="">admin</a></li>
                     <li class="breadcrumb-item active">quanly-chucvu</li>
                 </ol>
-
+@if($errors->any())
+    <div class="alert alert-danger">
+        thêm thất bại
+    </div>
+@endif
+@if(!$errors->any())
+    <div class="alert alert-success">
+        thêm thành công
+    </div>
+@endif
 <div class="row">
 
         <div class="col-md-4">
@@ -81,31 +90,27 @@
     </thead>
     <tbody>
 
-            <c:forEach items="" var="s">
-                <tr>
-                    <td></td>
-                    <td></td>
-                   
-               
-                    
-                    <!-- <td class="w-25">
-                          <img src="${s.image}" class="img-fluid img-thumbnail" alt="Sheep">
-
-                    </td> -->
-                  
-                    <td >
-                        <a data-toggle="tooltip" class="btn btn-success"title="chỉnh sửa" href="">
+          @foreach($positions as $p)
+            <tr>
+              <td>{{$p->id}}</td>
+              <td>{{$p->name}}</td>
+                
+                  <td>
+                        <a data-toggle="tooltip" class="btn btn-success"title="chỉnh sửa" href="{{route('positionEdit', ['id'=>$p->id])}}">
                         <i class="fa fa-edit"></i>
                          </a>
-                    </td>
-                     <td >
-                     <a data-toggle="tooltip" class="btn btn-primary"title="chỉnh sửa" href="">
+                    </td>                  
+                                
+                     <td>
+                     <a data-toggle="tooltip" class="btn btn-primary"title="xóa" href="{{route('delPosition',['id' => $p->id])}}">
                                <i class="fa fa-trash" style="color:#ed3c0d"></i>
                              
-                         </a>
+                     </a>
                     </td>
-                </tr>
-            </c:forEach>
+            </tr>
+
+            @endforeach
+
       </tbody>
 
 </table>
@@ -145,10 +150,15 @@
       </div>
       <div class="modal-body">
         
-      <form>
+      <form method="POST" action="{{route('insertPosition')}}">
+        {{csrf_field()}}
           <div class="form-group">
+              @error('name')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
             <label for="exampleInputEmail1">Tên chức vụ</label>
-            <input type="text" class="form-control" id="exampleInputEmail1"  placeholder="">
+            <input type="text" class="form-control" id="exampleInputEmail1" name='name'  placeholder="">
+</div>
 
           <button type="submit" class="btn btn-primary mttb">Thêm</button>
         </form>
@@ -162,3 +172,11 @@
 
 
 @endsection
+
+<script>   
+    var existErr = '{{Session::has('errors')}}';
+
+    if(exist){
+      alert("Đã có lỗi gì đó");
+    }
+</script>
