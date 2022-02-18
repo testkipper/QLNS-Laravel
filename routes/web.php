@@ -30,17 +30,16 @@ Route::get('/employee-manager', function () {
 Route::post('/department-manager', ['as'=>'insertDepartment', 'uses'=>'DepartmentController@insertDepartment']);
 Route::get('/department-manager', ['as'=>'departmentManager', 'uses'=>'DepartmentController@index']);
 
-Route::get('department-manager/{id}',['as'=>'delDepartment', 'uses'=>'DepartmentController@delDepartment']);
+Route::get('department-manager/{id}/delete',['as'=>'delDepartment', 'uses'=>'DepartmentController@delDepartment']);
+
 
 //ROUTE: END route department-manager
-
-
-
-
 //ROUTE START project-manager
 Route::post('/project-manager', ['as'=>'insertProject', 'uses'=>'ProjectController@insertProject']);
 Route::get('/project-manager', ['as'=>'projectManager', 'uses'=>'ProjectController@index']);
-
 Route::get('project-manager/{id}',['as'=>'delProject', 'uses'=>'ProjectController@delProject']);
-
 //ROUTE: END route project-manager
+Route::get('department-manager/{id}/edit',['as'=>'departmentedit','uses'=>'DepartmentController@edit']);
+Route::post('department-manager/{id}/edit',['as'=>'departmentupdate','uses'=>'DepartmentController@update']);
+//ROUTE: END route department-manager
+
