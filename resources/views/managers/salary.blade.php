@@ -7,7 +7,17 @@
                     <li class="breadcrumb-item "><a href="">admin</a></li>
                     <li class="breadcrumb-item active">quanly-quyluong</li>
                 </ol>
+@if($errors->any())
+    <div class="alert alert-danger">
+        thêm thất bại
+    </div>
+@endif
 
+@if(!$errors->any())
+    <div class="alert alert-success">
+        thêm thành công
+    </div>
+@endif
 <div class="row">
 
         <div class="col-md-4">
@@ -102,27 +112,27 @@
     </thead>
     <tbody>
 
-            <c:forEach items="" var="s">
+            @foreach($salaries as $s)
                 <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td>{{$s->id}}</td>
+                    <td>{{$s->base_salary}}</td>
+                    <td>{{$s->pay_rate}}</td>
+                    <td>{{$s->from_date}}</td>
+                    <td>{{$s->to_date}}</td>
                
                     <td >
-                        <a data-toggle="tooltip" class="btn btn-success"title="chỉnh sửa" href="">
+                        <a data-toggle="tooltip" class="btn btn-success"title="chỉnh sửa" href="{{route('salaryEdit',['id'=>$s->id])}}">
                         <i class="fa fa-edit"></i>
                          </a>
                     </td>
                      <td >
-                     <a data-toggle="tooltip" class="btn btn-primary"title="chỉnh sửa" href="">
+                     <a data-toggle="tooltip" class="btn btn-primary"title="chỉnh sửa" href="{{route('delSalary',['id' => $s->id])}}">
                                <i class="fa fa-trash" style="color:#ed3c0d"></i>
                              
                          </a>
                     </td>
                 </tr>
-            </c:forEach>
+            @endforeach
       </tbody>
 
 </table>
@@ -162,33 +172,41 @@
       </div>
       <div class="modal-body">
         
-      <form>
+      <form method="POST" action="{{route('insertSalary')}}">
+        {{csrf_field()}}
           <div class="form-group">
+              @error('base_salary')
+                    <div class="alert alert-danger">{{ $message }}</div>
+              @enderror
             <label for="exampleInputEmail1">Lương cơ bản</label>
-            <input type="text" class="form-control" id="exampleInputEmail1"  placeholder="">
+            <input type="text" class="form-control" id="exampleInputEmail1" name='base_salary'  placeholder="">
           </div>
+
           <div class="form-group">
+              @error('pay_rate')
+                    <div class="alert alert-danger">{{ $message }}</div>
+              @enderror
             <label for="exampleInputEmail1">Bậc lương</label>
-            <input type="number" class="form-control" id="exampleInputEmail1"  placeholder="">
+            <input type="text" class="form-control" id="exampleInputEmail1" name='pay_rate'  placeholder="">
           </div>
 
           <div class="form-group">
-            <label for="exampleInputPassword1">Ngày bắt đầu</label>
-            <input type="date" class="form-control" id="exampleInputPassword1">
+              @error('from_date')
+                    <div class="alert alert-danger">{{ $message }}</div>
+              @enderror
+            <label for="exampleInputEmail1">Ngày bắt đầu</label>
+            <input type="date" class="form-control" id="exampleInputEmail1" name='from_date'  placeholder="">
           </div>
 
           <div class="form-group">
-            <label for="exampleInputPassword1">Ngày kết thúc</label>
-            <input type="date" class="form-control" id="exampleInputPassword1">
+              @error('to_date')
+                    <div class="alert alert-danger">{{ $message }}</div>
+              @enderror
+            <label for="exampleInputEmail1">Ngày kết thúc</label>
+            <input type="date" class="form-control" id="exampleInputEmail1" name='to_date'  placeholder="">
           </div>
-          <!-- <div class="form-group">
-            <label for="inputState">Tên nhân viên</label>
-              <select id="inputState" class="form-control">
-                <option selected>Choose...</option>
-                <option>...</option>
-              </select>
-        </div> -->
-          <button type="submit" class="btn btn-primary">Thêm</button>
+
+          <button type="submit" class="btn btn-primary mttb">Thêm</button>
         </form>
         
       </div>

@@ -28,24 +28,24 @@ class LabourContractController extends Controller
         ],$messages)->validate();
         //$this->validate(request(),['productname'=>'required'];
 
-        $employees = Employee::all();
-
+     
+        
         $contract = LabourContract::create([
             'name' => $request->name,
             'from_date' => $request->from_date,
             'to_date' => $request->to_date, 
-            'employee_id' => $request -> employee_id,          
+            'employee_id' => $request -> employee_id          
         ]);
         $success = 'Thêm hợp đồng thành công!';
         $contracts = LabourContract::paginate(10);
-        return view('managers\labourcontract', compact('contracts', 'employees'))->with('success', $success);
+        return view('managers\labourcontract', compact('contracts'))->with('success', $success);
     }
 
     public function delLabourContract($id){
         $record = LabourContract::where("id", $id)->first();
         
         
-        Project::where("id", $id)->delete();
+        LabourContract::where("id", $id)->delete();
         $contract = LabourContract::paginate(10);
         return redirect()->action([LabourContractController::class, 'index']);
     }
@@ -80,7 +80,7 @@ class LabourContractController extends Controller
             'name' => $request->name,
             'from_date' => $request->from_date,
             'to_date' => $request->to_date, 
-            'employee_id' => $request -> employee_id,               
+            'employee_id' => $request -> employee_id,              
         ]
         );
 
