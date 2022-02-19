@@ -10,7 +10,7 @@ class Salary extends Model
     use HasFactory;
 
     use HasFactory;
-    protected $table= "Project";
-    protected $timestamps = false;
-    protected $fillable=['id', 'base_salary ','pay_rate','from_date', 'to_date'];
+    protected $table= "salary";
+    public $timestamps = false;
+    public $fillable=['id', 'base_salary','pay_rate','from_date', 'to_date'];
 }

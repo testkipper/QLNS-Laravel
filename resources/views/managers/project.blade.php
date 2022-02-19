@@ -120,15 +120,13 @@
                     <td>{{$p->name}}</td>
                     <td>{{$p->from_date}}</td>
                     <td>{{$p->to_date}}</td>
-               
-                    
                     <!-- <td class="w-25">
                           <img src="${s.image}" class="img-fluid img-thumbnail" alt="Sheep">
 
                     </td> -->
                   
                     <td >
-                        <a data-toggle="tooltip" class="btn btn-success"title="chỉnh sửa" href="">
+                        <a data-toggle="tooltip" class="btn btn-success"title="chỉnh sửa" href="{{route('projectEdit',['id'=>$p->id])}}">
                         <i class="fa fa-edit"></i>
                          </a>
                     </td>

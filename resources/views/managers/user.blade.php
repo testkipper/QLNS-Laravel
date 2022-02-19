@@ -2,17 +2,17 @@
 @section('content')
 <p class="mt-0">.</p>
 <p class="mt-0">.</p>
-<h4 class="mttb">Quản lý quỹ lương</h4>
+<h4 class="mttb">Quản lý user</h4>
                 <ol class="breadcrumb mb-4 mtt">
                     <li class="breadcrumb-item "><a href="">admin</a></li>
-                    <li class="breadcrumb-item active">quanly-quyluong</li>
+                    <li class="breadcrumb-item active">quanly-phongban</li>
                 </ol>
+
 @if($errors->any())
     <div class="alert alert-danger">
         thêm thất bại
     </div>
 @endif
-
 @if(!$errors->any())
     <div class="alert alert-success">
         thêm thành công
@@ -100,11 +100,11 @@
   
     <thead>
        <tr>
-            <th class="col-lg-1">Mã</th>           
-            <th class="col-lg-2">Lương cơ bản</th>
-            <th class="col-lg-3">Bậc lương</th>
-            <th class="col-lg-3">Ngày bắt đầu</th>
-            <th class="col-lg-3">Ngày kết thúc</th>
+            <th class="col-lg-1">Mã</th>
+
+            <th class="col-lg-9">Tên Đăng nhập</th>
+            <th class="col-lg-1">Email</th>
+            <th class="col-lg-1">Xác thực</th>
             <th class="col-lg-1">Sửa</th>
             <th class="col-lg-1">Xóa</th>
            
@@ -112,30 +112,42 @@
     </thead>
     <tbody>
 
-            @foreach($salaries as $s)
-                <tr>
-                    <td>{{$s->id}}</td>
-                    <td>{{$s->base_salary}}</td>
-                    <td>{{$s->pay_rate}}</td>
-                    <td>{{$s->from_date}}</td>
-                    <td>{{$s->to_date}}</td>
-               
-                    <td >
-                        <a data-toggle="tooltip" class="btn btn-success"title="chỉnh sửa" href="{{route('salaryEdit',['id'=>$s->id])}}">
+            <@foreach($users as $p)
+            <tr>
+                <td>{{$p->id}}</td>
+              	<td>{{$p->name}}</td>
+                <td>{{$p->email}}</td>
+                <td >
+                    @if (isset($p->email_verified_at))
+                        đã xác thực
+                    @els
+                    <a data-toggle="tooltip" class="btn btn-success"title="chỉnh sửa" href="{{route('departmentedit',['id'=>$p->id])}}">
                         <i class="fa fa-edit"></i>
                          </a>
-                    </td>
-                     <td >
-                     <a data-toggle="tooltip" class="btn btn-primary"title="chỉnh sửa" href="{{route('delSalary',['id' => $s->id])}}">
+                    @endif
+                  </td>  
+                <td >
+                        <a data-toggle="tooltip" class="btn btn-success"title="chỉnh sửa" href="{{route('departmentedit',['id'=>$p->id])}}">
+                        <i class="fa fa-edit"></i>
+                         </a>
+                </td>                  
+                                
+                <td >
+                     <a data-toggle="tooltip" class="btn btn-primary"title="xóa" href="{{route('delDepartment',['id' => $p->id])}}">
                                <i class="fa fa-trash" style="color:#ed3c0d"></i>
                              
                          </a>
-                    </td>
-                </tr>
+                </td>
+
+            </tr>
+
             @endforeach
+
       </tbody>
 
 </table>
+<br><br>
+{{$users ->links()}}
 </div>
     
     <!-- Modal
@@ -165,47 +177,48 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Thêm</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Thêm user</h5>
         <button type="button" class="close " data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
         
-      <form method="POST" action="{{route('insertSalary')}}">
+      <form method="POST" action="{{route('userregister')}}">
         {{csrf_field()}}
           <div class="form-group">
-              @error('base_salary')
+              @error('name')
                     <div class="alert alert-danger">{{ $message }}</div>
-              @enderror
-            <label for="exampleInputEmail1">Lương cơ bản</label>
-            <input type="text" class="form-control" id="exampleInputEmail1" name='base_salary'  placeholder="">
-          </div>
-
-          <div class="form-group">
-              @error('pay_rate')
+                @enderror
+            <label for="exampleInputEmail1">Tên tài khoản</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" name='name'  placeholder="">
+        </div>
+        <div class="form-group">
+              @error('email')
                     <div class="alert alert-danger">{{ $message }}</div>
-              @enderror
-            <label for="exampleInputEmail1">Bậc lương</label>
-            <input type="text" class="form-control" id="exampleInputEmail1" name='pay_rate'  placeholder="">
-          </div>
-
-          <div class="form-group">
-              @error('from_date')
+                @enderror
+            <label for="exampleInputEmail1">EMAIL</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" name='email'  placeholder="">
+        </div>
+        <div class="form-group">
+              @error('password')
                     <div class="alert alert-danger">{{ $message }}</div>
-              @enderror
-            <label for="exampleInputEmail1">Ngày bắt đầu</label>
-            <input type="date" class="form-control" id="exampleInputEmail1" name='from_date'  placeholder="">
-          </div>
-
-          <div class="form-group">
-              @error('to_date')
+                @enderror
+            <label for="exampleInputEmail1">mật khẩu</label>
+            <input type="password" class="form-control" id="exampleInputEmail1" name='password'  placeholder="">
+        </div>
+        <div class="form-group">
+              @error('password')
                     <div class="alert alert-danger">{{ $message }}</div>
-              @enderror
-            <label for="exampleInputEmail1">Ngày kết thúc</label>
-            <input type="date" class="form-control" id="exampleInputEmail1" name='to_date'  placeholder="">
-          </div>
-
+                @enderror
+            <label for="exampleInputEmail1">xác nhận mật khẩu</label>
+            <input type="password" class="form-control" id="exampleInputEmail1" name='password_confirmation'  placeholder="">
+        </div>
+        <select name="roles" id="roles" class="form-control">
+          @foreach($roles as $r)
+          <option value="{{$r->id}}">{{$r->slug}}</option>
+          @endforeach
+        </select> 
           <button type="submit" class="btn btn-primary mttb">Thêm</button>
         </form>
         
@@ -215,6 +228,44 @@
   </div>
 </div>           
 
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Modal Heading</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        Modal body..
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
 
 
 @endsection
+
+<script>
+    
+    var existErr = '{{Session::has('errors')}}';
+
+    if(exist){
+      alert("Đã có lỗi gì đó");
+    }
+    
+
+  </script>
+  
