@@ -126,7 +126,7 @@
                          </a>
                     </td>
                      <td >
-                     <a data-toggle="tooltip" class="btn btn-primary"title="chỉnh sửa" href="{{route('labourContractUpdate',['id' => $c->id])}}">
+                     <a data-toggle="tooltip" class="btn btn-primary"title="chỉnh sửa" href="{{route('delLabourContract',['id' => $c->id])}}">
                                <i class="fa fa-trash" style="color:#ed3c0d"></i>
                              
                          </a>
@@ -136,6 +136,7 @@
       </tbody>
 
 </table>
+
 </div>
     
     <!-- Modal
@@ -200,7 +201,7 @@
 
           <div class="form-group">
             <label for="inputState">Tên nhân viên</label>
-              <select path="employee" id="em" class="form-control">
+              <select path="employee" id="e" class="form-control">
                 @foreach($employees as $e)
                 <option value="{{$e->id}}">{{$e->first_name}}</option>
                 @endforeach
@@ -218,3 +219,12 @@
 
 
 @endsection
+
+
+<script>   
+    var existErr = '{{Session::has('errors')}}';
+
+    if(exist){
+      alert("Đã có lỗi gì đó");
+    }
+</script>

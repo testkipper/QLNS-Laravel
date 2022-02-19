@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\Validator;
 class ProjectController extends Controller
 {
     public function index(){
-
         $projects = Project::paginate(10);
         return view('managers\project', compact('projects'));
     }

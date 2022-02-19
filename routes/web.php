@@ -36,6 +36,8 @@ Route::get('department-manager/{id}/edit',['as'=>'departmentedit','uses'=>'Depar
 Route::post('department-manager/{id}/edit',['as'=>'departmentupdate','uses'=>'DepartmentController@update']);
 //ROUTE: END route department-manager
 
+
+
 //ROUTE START user-manager
 Route::get('/user-manager', ['as'=>'usermanager', 'uses'=>'UserController@userList']);
 Route::post('/user-manager/register', ['as'=>'userregister', 'uses'=>'UserController@store']);
@@ -116,7 +118,9 @@ Route::post('education-manager/{id}/edit',['as'=>'educationUpdate','uses'=>'Educ
 
 //ROUTE START labourcontract-manager
 Route::post('/labourcontract-manager', ['as'=>'insertLabourContract', 'uses'=>'LabourContractController@insertLabourContract']);
+
 Route::get('/labourcontract-manager', ['as'=>'labourContractManager', 'uses'=>'LabourContractController@index']);
+
 Route::get('labourcontract-manager/{id}',['as'=>'delLabourContract', 'uses'=>'LabourContractController@delLabourContract']);
 
 Route::get('labourcontract-manager/{id}/edit',['as'=>'labourContractEdit','uses'=>'LabourContractController@edit']);
@@ -124,3 +128,12 @@ Route::post('labourcontract-manager/{id}/edit',['as'=>'labourContractUpdate','us
 //ROUTE: END labourcontract-manager
 
 
+
+//ROUTE START salary-manager
+Route::post('/salary-manager', ['as'=>'insertSalary', 'uses'=>'SalaryController@insertSalary']);
+Route::get('/salary-manager', ['as'=>'salaryManager', 'uses'=>'SalaryController@index']);
+Route::get('salary-manager/{id}',['as'=>'delSalary', 'uses'=>'SalaryController@delSalary']);
+
+Route::get('salary-manager/{id}/edit',['as'=>'salaryEdit','uses'=>'SalaryController@edit']);
+Route::post('salary-manager/{id}/edit',['as'=>'salaryUpdate','uses'=>'SalaryController@update']);
+//ROUTE: END salary-manager

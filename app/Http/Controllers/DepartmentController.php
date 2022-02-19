@@ -38,6 +38,7 @@ class DepartmentController extends Controller
         $departments = Department::paginate(10);
         return view('managers\departments', compact('departments'))->with('alert', $alert);
         }
+
     public function delDepartment(Request $request,$id){
         if ($request->user()->can('create-department')){
         $record = Department::where("id", $id)->first();
@@ -68,7 +69,8 @@ class DepartmentController extends Controller
         $validator= Validator::make($request -> all(),[
             'name' => 'required'
         ],$messages)->validate();
-      department::updateOrCreate(
+      
+        department::updateOrCreate(
        [
         'id' => $id
        ],

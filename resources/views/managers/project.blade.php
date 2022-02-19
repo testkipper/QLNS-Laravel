@@ -107,7 +107,6 @@
             <th class="col-lg-3">Tên dự án</th>
             <th class="col-lg-3">Ngày bắt đầu</th>
             <th class="col-lg-3">Ngày kết thúc</th>
-            <th class="col-lg-3">Phòng ban</th>
             <th class="col-lg-1">Sửa</th>
             <th class="col-lg-1">Xóa</th>
            

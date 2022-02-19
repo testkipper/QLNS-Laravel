@@ -9,6 +9,7 @@
                 </ol>
 
 <div class="container-fluid">
+  
 <form method="POST" action="{{route('departmentupdate',['id'=>$department->id])}}">
      @csrf
   <div class="form-group">
