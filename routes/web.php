@@ -22,9 +22,7 @@ Route::middleware(['admin'])->group(function () {
         return view('dashboard');
     })->middleware(['auth'])->name('dashboard');
 });
-Route::get('/employee-manager', function () {
-    return view('managers.employee');
-    });
+
 
 //ROUTE START department-manager
 Route::post('/department-manager', ['as'=>'insertDepartment', 'uses'=>'DepartmentController@insertDepartment']);
@@ -82,6 +80,7 @@ Route::post('/project-manager', ['as'=>'insertProject', 'uses'=>'ProjectControll
 Route::get('/project-manager', ['as'=>'projectManager', 'uses'=>'ProjectController@index']);
 Route::get('project-manager/{id}',['as'=>'delProject', 'uses'=>'ProjectController@delProject']);
 
+
 Route::get('project-manager/{id}/edit',['as'=>'projectEdit','uses'=>'ProjectController@edit']);
 Route::post('project-manager/{id}/edit',['as'=>'projectUpdate','uses'=>'ProjectController@update']);
 //ROUTE: END project-manager
@@ -93,6 +92,162 @@ Route::post('project-manager/{id}/edit',['as'=>'projectUpdate','uses'=>'ProjectC
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//ROUTE START employee-manager
+Route::get('employee-manager', ['as' => 'employeeList', 'uses' => 'EmployeeController@index']);
+Route::get('addEmployee', ['as' => 'addEmployee', 'uses' => 'EmployeeController@insertEmployee']);
+Route::post('', ['as' => 'insert', 'uses' => 'EmployeeController@addEmployee']);
+//ROUTE: END route employee-manager
+=======
 //ROUTE START position-manager
 Route::post('/position-manager', ['as'=>'insertPosition', 'uses'=>'PositionController@insertPosition']);
 Route::get('/position-manager', ['as'=>'positionManager', 'uses'=>'PositionController@index']);
@@ -137,3 +292,4 @@ Route::get('salary-manager/{id}',['as'=>'delSalary', 'uses'=>'SalaryController@d
 Route::get('salary-manager/{id}/edit',['as'=>'salaryEdit','uses'=>'SalaryController@edit']);
 Route::post('salary-manager/{id}/edit',['as'=>'salaryUpdate','uses'=>'SalaryController@update']);
 //ROUTE: END salary-manager
+
