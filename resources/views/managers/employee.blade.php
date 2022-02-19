@@ -11,16 +11,16 @@
 <div class="row">
 
         <div class="col-md-4">
-            <button  type="button" data-toggle="modal" data-target="#createModal"  class="btn btn-outline-primary pull-left">                         
+            <a type="button"  href="{{route('addEmployee')}}"  class="btn btn-outline-primary pull-left">                         
                            Thêm 
-             </button>
+             </a>
         </div>
             
         <div class="col-md-8">
 
                 <div class="input-group" id="adv-search">
                 <form  id ="find"role="form">
-                    <input value="${firstname}" name="firstname" type="text" class="form-control" placeholder="tên điệm và tên" />
+                    <input value="${firstname}" name="firstname" type="text" class="form-control" placeholder="tên đệm và tên" />
                 </form>
                 <div class="input-group-btn">
                     <div class="btn-group" role="group">
@@ -98,9 +98,9 @@
             <th class="col-lg-1">Email</th>
             <th class="col-lg-2">Ngày sinh</th>
             <th class="col-lg-2">Địa chỉ</th>
-            <th class="col-lg-1">Phòng ban</th>
+            <!--<th class="col-lg-1">Phòng ban</th>
             <th class="col-lg-1">Chức vụ</th>
-            <th class="col-lg-1">Học vấn</th>
+            <th class="col-lg-1">Học vấn</th>-->
             <th class="col-lg-1">Sửa</th>
             <th class="col-lg-1">Xóa</th>
            
@@ -108,66 +108,46 @@
     </thead>
     <tbody>
 
-            <c:forEach items="" var="s">
+            @forEach($employees as $e)
                 <tr>
+                    <td>{{$e->id}}</td>
+                    <td>{{$e->first_name}}</td>
+                    <td>{{$e->last_name}}</td>
+                    <td>{{$e->gender}}</td>
+                    <td>{{$e->phone}}</td>
+                    <td>{{$e->email}}</td>
+                    <td>{{$e->birth_date}}</td>
+                    <td>{{$e->address}}</td>
+                    <!--<td>{{$e->id}}</td>
                     <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td></td>-->
                
                     <td >
-                        <a data-toggle="tooltip" class="btn btn-success"title="chỉnh sửa" href="">
+                        <button class="btn btn-outline-primary pull-left"title="chỉnh sửa" data-target="#editModal" data-toggle="modal">
                         <i class="fa fa-edit"></i>
-                         </a>
+                         </button>
                     </td>
                      <td >
-                     <a data-toggle="tooltip" class="btn btn-primary"title="chỉnh sửa" href="">
+                     <button data-toggle="tooltip" class="btn btn-primary"title="chỉnh sửa" href="">
                                <i class="fa fa-trash" style="color:#ed3c0d"></i>
                              
-                         </a>
+                         </button>
                     </td>
                 </tr>
-            </c:forEach>
+            @endforeach
       </tbody>
 
 </table>
 </div>
     
-    <!-- Modal
-<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-hidden="true">
+
+
+
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Xóa</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        Bạn có muốn chắn xóa 
-      </div>
-      <div class="modal-footer">
-          <a href="" class="btn btn-primary" id="delRef">Vâng,tôi chắc</a> 
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        
-      </div>
-    </div>
-  </div>
-</div> -->
-
-
-<div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Thêm nhân viên</h5>
+        <h5 class="modal-title" id="exModalLabel">Sửa nhân viên</h5>
         <button type="button" class="close " data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -177,44 +157,43 @@
       <form>
       <div class ="form-row" >
             <div class="form-group col-lg-6">
-                <label for="exampleInputEmail1">Họ</label>
-                <input type="text" class="form-control" id="exampleInputEmail1"  placeholder="">    
+                <label for="EditFirstNam">Họ</label>
+                <input type="text" class="form-control" id="EditFirstName"  placeholder="">    
             </div>
 
             <div class="form-group col-lg-6">
-                <label for="exampleInputEmail1">Tên</label>
-                <input type="text" class="form-control" id="exampleInputEmail1"  placeholder="">    
-            </div>
-        </div>
-
-        <div class ="form-row" >
-            <div class="form-group col-lg-6">
-                <label for="exampleInputEmail1">SĐT</label>
-                <input type="text" class="form-control" id="exampleInputEmail1"  placeholder="">    
-            </div>
-
-            <div class="form-group col-lg-6">
-                <label for="exampleInputEmail1">Email</label>
-                <input type="text" class="form-control" id="exampleInputEmail1"  placeholder="">    
+                <label for="EditLastName">Tên</label>
+                <input type="text" class="form-control" id="EditLastName "  placeholder="">    
             </div>
         </div>
 
         <div class ="form-row" >
             <div class="form-group col-lg-6">
-                <label for="exampleInputEmail1">Ngày sinh</label>
-                <input type="date" class="form-control" id="exampleInputEmail1"  placeholder="">    
+                <label for="EditPhone">SĐT</label>
+                <input type="text" class="form-control" id="EditPhone"  placeholder="">    
             </div>
 
             <div class="form-group col-lg-6">
-            <label for="inputState">Phòng ban</label>
-                <select id="inputState" class="form-control">
+                <label for="EditEmail">Email</label>
+                <input type="text" class="form-control" id="EditEmail"  placeholder="">    
+            </div>
+        </div>
+
+        <div class ="form-row" >
+            <div class="form-group col-lg-6">
+                <label for="EditBD">Ngày sinh</label>
+                <input type="date" class="form-control" id="EditBD"  placeholder="">    
+            </div>
+
+            <div class="form-group col-lg-6">
+            <label for="EditDepartment">Phòng ban</label>
+                <select id="EditDepartment" class="form-control">
                     <option selected>Choose...</option>
                     <option>...</option>
                 </select>  
                 </div>
          </div>
-
-            <div class ="form-row" >
+            <!--<div class ="form-row" >
                 <div class="form-group col-lg-6">
                 <label for="inputState">Học vấn</label>
                 <select id="inputState" class="form-control">
@@ -228,7 +207,8 @@
                     <option selected>Choose...</option>
                     <option>...</option>
                 </select>
-            </div>
+                </div>
+            </div>-->
         
           <button type="submit" class="btn btn-primary">Thêm</button>
         </form>
@@ -237,7 +217,7 @@
       
     </div>
   </div>
-</div>           
+</div>            
 
 
 
