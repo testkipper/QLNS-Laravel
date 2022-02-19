@@ -218,34 +218,14 @@ Route::post('project-manager/{id}/edit',['as'=>'projectUpdate','uses'=>'ProjectC
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //ROUTE START employee-manager
 Route::get('employee-manager', ['as' => 'employeeList', 'uses' => 'EmployeeController@index']);
 Route::get('addEmployee', ['as' => 'addEmployee', 'uses' => 'EmployeeController@insertEmployee']);
 Route::post('/employee-manager/create', ['as' => 'insert', 'uses' => 'EmployeeController@addEmployee']);
+Route::get('employee-manager/{id}/edit',['as'=>'employeeEdit','uses'=>'EmployeeController@edit']);
+Route::post('employee-manager/{id}/edit', ['as' => 'updateEmployee', 'uses' => 'EmployeeController@update']);
+
+Route::get('employee-manager/{id}/delete', ['as' => 'deleteEmployee', 'uses' => 'EmployeeController@delete']);
 //ROUTE: END route employee-manager
 //ROUTE START position-manager
 Route::post('/position-manager', ['as'=>'insertPosition', 'uses'=>'PositionController@insertPosition']);

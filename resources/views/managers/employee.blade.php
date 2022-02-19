@@ -123,15 +123,16 @@
                     <td></td>-->
                
                     <td >
-                        <button class="btn btn-outline-primary pull-left"title="chỉnh sửa" data-target="#editModal" data-toggle="modal">
-                        <i class="fa fa-edit"></i>
-                         </button>
+                        <a data-toggle="tooltip" class="btn btn-primary"title="xóa" href="{{route('employeeEdit',['id' => $e->id])}}">
+                               <i class="fa fa-edit" style="color:#ed3c0d"></i>
+                             
+                         </a>
                     </td>
                      <td >
-                     <button data-toggle="tooltip" class="btn btn-primary"title="chỉnh sửa" href="">
-                               <i class="fa fa-trash" style="color:#ed3c0d"></i>
+                     <a data-toggle="tooltip" class="btn btn-primary"title="xóa" href="{{route('deleteEmployee',['id' => $e->id])}}">
+                               <i class="fa fa-remove" style="color:#ed3c0d"></i>
                              
-                         </button>
+                         </a>
                     </td>
                 </tr>
             @endforeach
@@ -143,56 +144,7 @@
 
 
 
-<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exModalLabel">Sửa nhân viên</h5>
-        <button type="button" class="close " data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        
-      <form>
-      <div class ="form-row" >
-            <div class="form-group col-lg-6">
-                <label for="EditFirstNam">Họ</label>
-                <input type="text" class="form-control" id="EditFirstName"  placeholder="">    
-            </div>
 
-            <div class="form-group col-lg-6">
-                <label for="EditLastName">Tên</label>
-                <input type="text" class="form-control" id="EditLastName "  placeholder="">    
-            </div>
-        </div>
-
-        <div class ="form-row" >
-            <div class="form-group col-lg-6">
-                <label for="EditPhone">SĐT</label>
-                <input type="text" class="form-control" id="EditPhone"  placeholder="">    
-            </div>
-
-            <div class="form-group col-lg-6">
-                <label for="EditEmail">Email</label>
-                <input type="text" class="form-control" id="EditEmail"  placeholder="">    
-            </div>
-        </div>
-
-        <div class ="form-row" >
-            <div class="form-group col-lg-6">
-                <label for="EditBD">Ngày sinh</label>
-                <input type="date" class="form-control" id="EditBD"  placeholder="">    
-            </div>
-
-            <div class="form-group col-lg-6">
-            <label for="EditDepartment">Phòng ban</label>
-                <select id="EditDepartment" class="form-control">
-                    <option selected>Choose...</option>
-                    <option>...</option>
-                </select>  
-                </div>
-         </div>
             <!--<div class ="form-row" >
                 <div class="form-group col-lg-6">
                 <label for="inputState">Học vấn</label>
@@ -210,14 +162,9 @@
                 </div>
             </div>-->
         
-          <button type="submit" class="btn btn-primary">Thêm</button>
-        </form>
+          </div>
         
-      </div>
-      
-    </div>
-  </div>
-</div>            
+  
 
 
 
