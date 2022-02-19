@@ -14,6 +14,10 @@ class EmployeeController extends Controller
         
         return view('managers\employee', compact('employees'));
     }
+    public function insertEmployee(){
+        $departments = Department::all();
+        return view('managers\addEmployee', compact('departments'));
+    }
 
     public function addEmployee(Request $request){
         
@@ -25,18 +29,18 @@ class EmployeeController extends Controller
                 'birth_date.required'=>'Bạn phải chọn ngày sinh',
                 'department_id.required'=>'Bạn phải nhập tên phòng bang',
                 'gender.required'=>'Bạn phải chọn giới tính',
-                'address.required'=>'Bạn phải nhập địa chỉ',
+                'address.required'=>'Bạn phải nhập địa chỉ'
 
                 ];
         $validator= Validator::make($request -> all(),[
-            'first_name' => 'required',
-            'last_name' => 'required',
-            'phone' => 'required',
-            'email' => 'required',
-            'birth_date' => 'required',
-            'department_id' => 'required',
-            'gender' => 'required',
-            'address' => 'required',
+            'inputFirstName' => 'required',
+            'inputLastName' => 'required',
+            'inputPhone' => 'required',
+            'inputEmail' => 'required',
+            'inputBD' => 'required',
+            'inputDepartment' => 'required',
+            'inputGender' => 'required',
+            'inputAddress' => 'required'
 
         ],$messages)->validate();
        
@@ -55,10 +59,7 @@ class EmployeeController extends Controller
         $employees = Employee::paginate(10);
         return view('managers\employee', compact('employees'))->with('success', $success);
     }
-    public function insertEmployee(){
-        $departments = Department::all();
-        return view('managers\addEmployee', compact('departments'));
-    }
+    
     /*public function delDepartment($id){
         $record = Department::where("id", $id)->first();
         

@@ -11,7 +11,7 @@ class Employee extends Model
 
     protected $table= "Employee";
     public $timestamps = false;
-    protected $fillable=['id', 'last_name', 'first_name', 'gender', 'birth_date', 'phone','email','address', 'department_id'];
+    public $fillable=['id', 'last_name', 'first_name', 'gender', 'birth_date', 'phone','email','address', 'department_id'];
 
     
     public function Department() {

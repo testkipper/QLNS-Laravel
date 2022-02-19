@@ -19,6 +19,9 @@
         {{csrf_field()}}
       <div class ="form-row" >
             <div class="form-group col-lg-6">
+                 @error('first_name')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
                 <label for="inputFirstName">Họ</label>
                 <input type="text" class="form-control" id="inputFirstName" name="inputFirstName"  placeholder="">    
             </div>
